@@ -1,4 +1,4 @@
-# SeleniumAutomation
+# Selenium Automation Assignment
 
 INFO6255 – Selenium Test Automation Assignment.
 

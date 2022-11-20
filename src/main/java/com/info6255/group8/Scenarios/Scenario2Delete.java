@@ -22,11 +22,11 @@ public class Scenario2Delete {
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
         // Type in username and password
-        driver.findElement(By.id("userNameInput")).sendKeys("Your Own Username");
-        driver.findElement(By.id("passwordInput")).sendKeys("Your Own Password");
+        driver.findElement(By.id("userNameInput")).sendKeys("Your username");
+        driver.findElement(By.id("passwordInput")).sendKeys("Your password");
         driver.findElement(By.id("submitButton")).click();
         try {
-            Thread.sleep(7000);
+            Thread.sleep(4000);
         } catch (Exception err) {
             System.out.println(err);
         }
@@ -70,13 +70,16 @@ public class Scenario2Delete {
         // Click on option to add in favorites
         driver.findElement(By.xpath("//*[@id=\"7b3083e7-1956-4f64-968b-920d938ba636\"]/div/div/div/div[2]/div/div/div[1]/div/div[10]/div/i")).click();
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         } catch (Exception err) {
             System.out.println(err);
         }
         driver.findElement(By.xpath("//*[@id=\"7b3083e7-1956-4f64-968b-920d938ba636\"]/div/div/div/div[2]/div/div/div[1]/div/div[11]/div/i")).click();
-
-        ;
+        try {
+            Thread.sleep(4000);
+        } catch (Exception err) {
+            System.out.println(err);
+        }
 
     }
 

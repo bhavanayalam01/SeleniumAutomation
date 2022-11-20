@@ -22,8 +22,8 @@ public class Scenario2Delete {
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
         // Type in username and password
-        driver.findElement(By.id("userNameInput")).sendKeys("zhang.yuso@northeastern.edu");
-        driver.findElement(By.id("passwordInput")).sendKeys("Zys400419......");
+        driver.findElement(By.id("userNameInput")).sendKeys("Your Own Username");
+        driver.findElement(By.id("passwordInput")).sendKeys("Your Own Password");
         driver.findElement(By.id("submitButton")).click();
         try {
             Thread.sleep(7000);

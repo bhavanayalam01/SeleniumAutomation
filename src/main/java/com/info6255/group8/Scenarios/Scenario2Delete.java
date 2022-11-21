@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -27,8 +29,8 @@ public class Scenario2Delete {
 
 
         // Type in username and password
-        driver.findElement(By.id("userNameInput")).sendKeys("Your username");
-        driver.findElement(By.id("passwordInput")).sendKeys("Your password");
+        driver.findElement(By.id("userNameInput")).sendKeys("UserName");
+        driver.findElement(By.id("passwordInput")).sendKeys("Password");
         shot(driver,"D:/Github/SeleniumAutomation/Scenario2.3.png");
         driver.findElement(By.id("submitButton")).click();
         try {

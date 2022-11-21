@@ -9,21 +9,27 @@ import org.openqa.selenium.interactions.Actions;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import static com.info6255.group8.ScreenShot.shot;
+
 
 public class Scenario2Delete {
     public static void runScenario2(WebDriver driver) throws InterruptedException {
         // Open New Window for me.northeastern.edu
 
         driver.get("https://me.northeastern.edu");
+        shot(driver,"D:/Github/SeleniumAutomation/Scenario2.1.png");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
         // Choose Active Directory
         driver.findElement(By.xpath("//*[text()='Active Directory']")).click();
+        shot(driver,"D:/Github/SeleniumAutomation/Scenario2.2.png");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+
 
         // Type in username and password
         driver.findElement(By.id("userNameInput")).sendKeys("Your username");
         driver.findElement(By.id("passwordInput")).sendKeys("Your password");
+        shot(driver,"D:/Github/SeleniumAutomation/Scenario2.3.png");
         driver.findElement(By.id("submitButton")).click();
         try {
             Thread.sleep(4000);
@@ -32,7 +38,9 @@ public class Scenario2Delete {
         }
 
         // Send Duo Authentication
+        shot(driver,"D:/Github/SeleniumAutomation/Scenario2.4.png");
         driver.findElement(By.cssSelector("button.positive.auth-button")).click();
+        shot(driver,"D:/Github/SeleniumAutomation/Scenario2.5.png");
         try {
             Thread.sleep(7000);
         } catch (Exception err) {
@@ -46,6 +54,7 @@ public class Scenario2Delete {
         } catch (Exception err) {
             System.out.println(err);
         }
+        shot(driver,"D:/Github/SeleniumAutomation/Scenario2.6.png");
         driver.findElement(By.id("id__94")).click();
         driver.manage().window().maximize();
         try {
@@ -56,7 +65,9 @@ public class Scenario2Delete {
 
 
         // Click Resources Button
+        shot(driver,"D:/Github/SeleniumAutomation/Scenario2.7.png");
         driver.findElement(By.partialLinkText("Resources")).click();
+        shot(driver,"D:/Github/SeleniumAutomation/Scenario2.8.png");
         try {
             Thread.sleep(3000);
         } catch (Exception err) {
@@ -65,6 +76,7 @@ public class Scenario2Delete {
 
         // Click Classes Button
         driver.findElement(By.tagName("p")).click();
+        shot(driver,"D:/Github/SeleniumAutomation/Scenario2.9.png");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
         // Click on option to add in favorites
@@ -80,6 +92,7 @@ public class Scenario2Delete {
         } catch (Exception err) {
             System.out.println(err);
         }
+        shot(driver,"D:/Github/SeleniumAutomation/Scenario2.10.png");
 
     }
 

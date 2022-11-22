@@ -14,10 +14,10 @@ public class ScreenShot {
     public static void shot(WebDriver driver,String savedPtah){
         File srcfile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try{
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH-mm-ss");
             LocalDateTime now = LocalDateTime.now();
-//            System.out.println(dtf.format(now));
-            FileUtils.copyFile(srcfile,new File("C:\\Users\\swapn\\Documents\\Fall 2022\\Software Quality Control and Management\\Assignments\\Selenium Assignment\\SeleniumAutomation\\"+now.toString()));
+            savedPtah = "C:/Users/swapn/Desktop/Screenshot/"+dtf.format(now)+".png";
+            FileUtils.copyFile(srcfile,new File(savedPtah));
         }catch (IOException e){
             e.printStackTrace();
         }

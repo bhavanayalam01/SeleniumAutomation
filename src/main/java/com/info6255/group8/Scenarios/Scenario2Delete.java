@@ -27,7 +27,6 @@ public class Scenario2Delete {
         shot(driver,"D:/Github/SeleniumAutomation/Scenario2.2.png");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
-
         // Type in username and password
         driver.findElement(By.id("userNameInput")).sendKeys("UserName");
         driver.findElement(By.id("passwordInput")).sendKeys("Password");

@@ -12,7 +12,7 @@ public class ReadExcelData {
 
     public ReadExcelData() {
         try {
-            File sourceFile = new File("C:\\Users\\swapn\\Documents\\Fall 2022\\Software Quality Control and Management\\Assignments\\Selenium Assignment\\SeleniumAutomation\\UserData.xlsx");
+            File sourceFile = new File("C:\\Users\\swapn\\Desktop\\UserData.xlsx");
             FileInputStream file = new FileInputStream(sourceFile);
             workbook = new XSSFWorkbook(file);
         } catch (Exception e) {

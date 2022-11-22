@@ -1,11 +1,17 @@
 package com.info6255.group8.Scenarios;
 
 import com.info6255.group8.ReadExcelData;
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import java.util.Base64;
 import java.util.concurrent.TimeUnit;
 
 import static com.info6255.group8.ScreenShot.shot;
@@ -13,6 +19,14 @@ import static com.info6255.group8.ScreenShot.shot;
 public class Scenario1 {
 
     ChromeDriver driver;
+    static ExtentReports testReport;
+    static ExtentTest test;
+
+    @BeforeClass
+    public static void startTest() {
+        testReport = new com.relevantcodes.extentreports.ExtentReports("C:\\Users\\swapn\\Documents\\Fall 2022\\Software Quality Control and Management\\Assignments\\Selenium Assignment\\SeleniumAutomation\\Reports.html", true);
+        test = testReport.startTest("Scenario1Check");
+    }
 
     @Test(dataProvider = "dataInput")
     public void performLogin(String userName, String password) {
@@ -25,6 +39,13 @@ public class Scenario1 {
         driver.get("https://me.northeastern.edu");
         driver.manage().window().maximize();
         shot(driver,"");
+
+        // Validation to check Northeastern Website load was successfully
+        if (driver.getTitle().equalsIgnoreCase("Home Realm Discovery")) {
+            test.log(LogStatus.PASS,"Navigation to me.northeastern.edu was successful");
+        } else {
+            test.log(LogStatus.FAIL,"Navigation to me.northeastern.edu failed");
+        }
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
         // Choose Active Directory
@@ -34,6 +55,7 @@ public class Scenario1 {
 
         // Type in username and password and click submit
         driver.findElement(By.id("userNameInput")).sendKeys(userName);
+//        System.out.println(Base64.getDecoder().decode(password).toString());
         driver.findElement(By.id("passwordInput")).sendKeys(password);
         shot(driver,"");
         driver.findElement(By.id("submitButton")).click();
@@ -71,6 +93,13 @@ public class Scenario1 {
             err.printStackTrace();
         }
 
+//        Validation to check login was successful
+        if (driver.getTitle().equalsIgnoreCase("Student Hub - Home")) {
+            test.log(LogStatus.PASS,"Login Successful");
+        } else {
+            test.log(LogStatus.FAIL,"Login Failed");
+        }
+
         // Click Resources Button
         driver.manage().window().maximize();
         shot(driver,"");
@@ -79,6 +108,13 @@ public class Scenario1 {
             Thread.sleep(3000);
         } catch (Exception err) {
             err.printStackTrace();
+        }
+
+        //        Validation to check resource page navigation was successful
+        if (driver.getTitle().equalsIgnoreCase("Student Hub - Resources")) {
+            test.log(LogStatus.PASS,"Navigation to Resources Page - Success");
+        } else {
+            test.log(LogStatus.FAIL,"Navigation to Resources Page - Failed");
         }
 
         // Click on the Academics, Classes & Registration Button
@@ -128,6 +164,12 @@ public class Scenario1 {
             err.printStackTrace();
         }
 
+        if (driver.getPageSource().contains("Find a link you want to favorite")) {
+            test.log(LogStatus.FAIL,"Adding link to favorites failed");
+        } else {
+            test.log(LogStatus.PASS,"Successfully added link to favorite");
+        }
+
         shot(driver,"");
         // Logout and Close the window
         driver.findElement(By.xpath("//*[@id='O365_MainLink_Me']")).click();
@@ -142,6 +184,12 @@ public class Scenario1 {
         driver.close();
         shot(driver,"");
 
+    }
+
+    @AfterClass
+    public static void endTest() {
+        testReport.endTest(test);
+        testReport.flush();
     }
 
     @DataProvider(name = "dataInput")

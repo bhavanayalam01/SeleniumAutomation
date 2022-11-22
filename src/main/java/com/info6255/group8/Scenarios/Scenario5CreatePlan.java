@@ -67,7 +67,7 @@ public class Scenario5CreatePlan {
         shot(driver,"D:/Github/SeleniumAutomation/Scenario5.7.png");
 
         // Click Classes Button
-        driver.findElement(By.tagName("p")).click();
+            driver.findElement(By.tagName("p")).click();
         shot(driver,"D:/Github/SeleniumAutomation/Scenario5.8.png");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 

@@ -1,27 +1,25 @@
 package com.info6255.group8.Scenarios;
+
+import com.info6255.group8.ReadExcelData;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import static com.info6255.group8.ScreenShot.shot;
-import java.io.File;
-import java.io.FileInputStream;
-import java.util.Properties;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
 import java.util.concurrent.TimeUnit;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class Scenario1AddToFav {
+import static com.info6255.group8.ScreenShot.shot;
 
-    public static void runScenario1(WebDriver driver) {
+public class Scenario1 {
 
-        // Load data from excel file
-//        FileInputStream userData = new FileInputStream("/Users/swapn/Documents/Fall 2022/Software Quality Control and Management/Assignments/Selenium Assignment/SeleniumAutomation/UserData.xlsx");
-//        Properties properties = new Properties();
-//        properties.load(userData);
+    ChromeDriver driver;
 
+    @Test(dataProvider = "dataInput")
+    public void performLogin(String userName, String password) {
 
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\swapn\\Downloads\\chromedriver_win32 (1)\\chromedriver.exe");
+
+        driver = new ChromeDriver();
         // Load Northeastern Login Page
         shot(driver,"");
         driver.get("https://me.northeastern.edu");
@@ -34,34 +32,16 @@ public class Scenario1AddToFav {
         shot(driver,"");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
-//        // Get Data from Excel Sheet
-//        @DataProvider(name="testdata")
-//        public Object[][] testDataExample() {
-//            ReadExcelFile configuration = new ReadExcelFile("Path_of_Your_Excel_File");
-//            int rows = configuration.getRowCount(0);
-//            Object[][]signin_credentials = new Object[rows][2];
-//
-//            for(int i=0;i<rows;i++)
-//            {
-//                signin_credentials[i][0] = config.getData(0, i, 0);
-//                signin_credentials[i][1] = config.getData(0, i, 1);
-//            }
-//            return signin_credentials;
-//        }
-
-//        @Test(dataProvider = "testdata")
-//        public void performLogin(String userName, String password) {
-            // Type in username and password and click submit
-            driver.findElement(By.id("userNameInput")).sendKeys("UserName");
-            driver.findElement(By.id("passwordInput")).sendKeys("Password");
-            shot(driver,"");
-            driver.findElement(By.id("submitButton")).click();
-            try {
-                Thread.sleep(4000);
-            } catch (Exception err) {
-                err.printStackTrace();
-            }
-//        }
+        // Type in username and password and click submit
+        driver.findElement(By.id("userNameInput")).sendKeys(userName);
+        driver.findElement(By.id("passwordInput")).sendKeys(password);
+        shot(driver,"");
+        driver.findElement(By.id("submitButton")).click();
+        try {
+            Thread.sleep(4000);
+        } catch (Exception err) {
+            err.printStackTrace();
+        }
 
         shot(driver,"");
         // Send a Push notification to the user
@@ -81,19 +61,12 @@ public class Scenario1AddToFav {
         } catch (Exception err) {
             err.printStackTrace();
         }
-//        driver.findElement(By.id("id__94")).click();
-//        driver.manage().window().maximize();
-//        try {
-//            Thread.sleep(2000);
-//        } catch (Exception err) {
-//            System.out.println(err);
-//        }
 
         // Close the dialog box
         shot(driver,"");
         driver.findElement(By.xpath("//*[text()='\uE711']")).click();
         try {
-            Thread.sleep(8000);
+            Thread.sleep(4000);
         } catch (Exception err) {
             err.printStackTrace();
         }
@@ -112,7 +85,7 @@ public class Scenario1AddToFav {
         shot(driver,"");
         driver.findElement(By.xpath("//*[text()='Academics, Classes & Registration']")).click();
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2000);
         } catch (Exception err) {
             err.printStackTrace();
         }
@@ -123,7 +96,7 @@ public class Scenario1AddToFav {
         shot(driver,"");
         driver.findElement(By.xpath("//*[@data-gtm-sh-resources-favorite='Canvas LMS']")).click();
         try {
-            Thread.sleep(4000);
+            Thread.sleep(1500);
         } catch (Exception err) {
             err.printStackTrace();
         }
@@ -132,7 +105,7 @@ public class Scenario1AddToFav {
         shot(driver,"");
         driver.findElement(By.xpath("//*[@data-gtm-sh-resources-favorite='Course Descriptions']")).click();
         try {
-            Thread.sleep(4000);
+            Thread.sleep(1500);
         } catch (Exception err) {
             err.printStackTrace();
         }
@@ -141,7 +114,7 @@ public class Scenario1AddToFav {
         shot(driver,"");
         driver.findElement(By.xpath("//*[@data-gtm-sh-resources-favorite='Academic Calendar']")).click();
         try {
-            Thread.sleep(4000);
+            Thread.sleep(1500);
         } catch (Exception err) {
             err.printStackTrace();
         }
@@ -150,7 +123,7 @@ public class Scenario1AddToFav {
         shot(driver,"");
         driver.findElement(By.xpath("//*[@data-gtm-sh-resources-favorite='Advising Services']")).click();
         try {
-            Thread.sleep(4000);
+            Thread.sleep(1500);
         } catch (Exception err) {
             err.printStackTrace();
         }
@@ -168,5 +141,21 @@ public class Scenario1AddToFav {
         }
         driver.close();
         shot(driver,"");
+
     }
+
+    @DataProvider(name = "dataInput")
+    public Object [][] DataInputFeed() {
+        ReadExcelData config = new ReadExcelData();
+        int rows = config.getRowCount(0);
+        Object [][] credentials = new Object[rows][2];
+
+        for (int i=0;i<rows;i++) {
+            credentials[i][0] = config.getData(0,i,0);
+            credentials[i][1] = config.getData(0,i,1);
+        }
+        return credentials;
+    }
+
+
 }

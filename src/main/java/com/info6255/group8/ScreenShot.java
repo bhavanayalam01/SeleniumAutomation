@@ -11,12 +11,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class ScreenShot {
-    public static String shot(WebDriver driver,String savedPtah){
+    public static String shot(WebDriver driver,String savedPtah,String scenario){
         File srcfile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try{
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH-mm-ss");
             LocalDateTime now = LocalDateTime.now();
-            savedPtah = "src/shots/"+dtf.format(now)+".png";
+            savedPtah = "src/shots/"+scenario+"/"+dtf.format(now)+".png";
             FileUtils.copyFile(srcfile,new File(savedPtah));
             return savedPtah;
         }catch (IOException e){

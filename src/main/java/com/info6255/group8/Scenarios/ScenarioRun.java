@@ -50,10 +50,10 @@ public class ScenarioRun {
 
         driver = new ChromeDriver();
         // Load Northeastern Login Page
-        shot(driver,"");
+        shot(driver,"","scenario1");
         driver.get("https://me.northeastern.edu");
         driver.manage().window().maximize();
-        shot(driver,"");
+        shot(driver,"","scenario1");
 
         // Validation to check Northeastern Website load was successfully
         if (driver.getTitle().equalsIgnoreCase("Home Realm Discovery")) {
@@ -65,13 +65,13 @@ public class ScenarioRun {
 
         // Choose Active Directory
         driver.findElement(By.xpath("//*[text()='Active Directory']")).click();
-        shot(driver,"");
+        shot(driver,"","scenario1");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
         // Type in username and password and click submit
         driver.findElement(By.id("userNameInput")).sendKeys(userName);
         driver.findElement(By.id("passwordInput")).sendKeys(password);
-        shot(driver,"");
+        shot(driver,"","scenario1");
         driver.findElement(By.id("submitButton")).click();
         try {
             Thread.sleep(4000);
@@ -79,10 +79,10 @@ public class ScenarioRun {
             err.printStackTrace();
         }
 
-        shot(driver,"");
+        shot(driver,"","scenario1");
         // Send a Push notification to the user
         driver.findElement(By.xpath("//*[text()='Send Me a Push ']")).click();
-        shot(driver,"");
+        shot(driver,"","scenario1");
         try {
             Thread.sleep(7000);
         } catch (Exception err) {
@@ -90,7 +90,7 @@ public class ScenarioRun {
         }
 
         // Login Confirmation
-        shot(driver,"");
+        shot(driver,"","scenario1");
         driver.findElement(By.id("idSIButton9")).click();
         try {
             Thread.sleep(12000);
@@ -99,7 +99,7 @@ public class ScenarioRun {
         }
 
         // Close the dialog box
-        shot(driver,"");
+        shot(driver,"","scenario1");
         driver.findElement(By.xpath("//*[text()='\uE711']")).click();
         try {
             Thread.sleep(4000);
@@ -116,7 +116,7 @@ public class ScenarioRun {
 
         // Click Resources Button
         driver.manage().window().maximize();
-        shot(driver,"");
+        shot(driver,"","scenario1");
         driver.findElement(By.partialLinkText("Resources")).click();
         try {
             Thread.sleep(3000);
@@ -132,7 +132,7 @@ public class ScenarioRun {
         }
 
         // Click on the Academics, Classes & Registration Button
-        shot(driver,"");
+        shot(driver,"","scenario1");
         driver.findElement(By.xpath("//*[text()='Academics, Classes & Registration']")).click();
         try {
             Thread.sleep(2000);
@@ -143,7 +143,7 @@ public class ScenarioRun {
         // Add to Favorites
 
         // 1. Canvas LMS
-        shot(driver,"");
+        shot(driver,"","scenario1");
         driver.findElement(By.xpath("//*[@data-gtm-sh-resources-favorite='Canvas LMS']")).click();
         try {
             Thread.sleep(1500);
@@ -152,7 +152,7 @@ public class ScenarioRun {
         }
 
         // 2. Course Descriptions
-        shot(driver,"");
+        shot(driver,"","scenario1");
         driver.findElement(By.xpath("//*[@data-gtm-sh-resources-favorite='Course Descriptions']")).click();
         try {
             Thread.sleep(1500);
@@ -161,7 +161,7 @@ public class ScenarioRun {
         }
 
         // 3. Academic Calender
-        shot(driver,"");
+        shot(driver,"","scenario1");
         driver.findElement(By.xpath("//*[@data-gtm-sh-resources-favorite='Academic Calendar']")).click();
         try {
             Thread.sleep(1500);
@@ -170,7 +170,7 @@ public class ScenarioRun {
         }
 
         // 4. Advising Services
-        shot(driver,"");
+        shot(driver,"","scenario1");
         driver.findElement(By.xpath("//*[@data-gtm-sh-resources-favorite='Advising Services']")).click();
         try {
             Thread.sleep(1500);
@@ -184,12 +184,12 @@ public class ScenarioRun {
             test1.log(LogStatus.PASS,"Successfully added link to favorite");
         }
 
-        shot(driver,"");
+        shot(driver,"","scenario1");
         // Logout and Close the window
         driver.findElement(By.xpath("//*[@id='O365_MainLink_Me']")).click();
-        shot(driver,"");
+        shot(driver,"","scenario1");
         driver.findElement(By.xpath("//*[text()='Sign out']")).click();
-        shot(driver,"");
+        shot(driver,"","scenario1");
         try {
             Thread.sleep(4000);
         } catch (Exception err) {
@@ -218,10 +218,10 @@ public class ScenarioRun {
 
         driver = new ChromeDriver();
         // Load Northeastern Login Page
-        shot(driver,"");
+        shot(driver,"","scenario2");
         driver.get("https://me.northeastern.edu");
         driver.manage().window().maximize();
-        shot(driver,"");
+        shot(driver,"","scenario2");
 
         // Validation to check Northeastern Website load was successfully
         if (driver.getTitle().equalsIgnoreCase("Home Realm Discovery")) {
@@ -233,14 +233,14 @@ public class ScenarioRun {
 
         // Choose Active Directory
         driver.findElement(By.xpath("//*[text()='Active Directory']")).click();
-        shot(driver,"");
+        shot(driver,"","scenario2");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
         // Type in username and password and click submit
         driver.findElement(By.id("userNameInput")).sendKeys(userName);
 //        System.out.println(Base64.getDecoder().decode(password).toString());
         driver.findElement(By.id("passwordInput")).sendKeys(password);
-        shot(driver,"");
+        shot(driver,"","scenario2");
         driver.findElement(By.id("submitButton")).click();
         try {
             Thread.sleep(4000);
@@ -248,10 +248,10 @@ public class ScenarioRun {
             err.printStackTrace();
         }
 
-        shot(driver,"");
+        shot(driver,"","scenario2");
         // Send a Push notification to the user
         driver.findElement(By.xpath("//*[text()='Send Me a Push ']")).click();
-        shot(driver,"");
+        shot(driver,"","scenario2");
         try {
             Thread.sleep(7000);
         } catch (Exception err) {
@@ -259,7 +259,7 @@ public class ScenarioRun {
         }
 
         // Login Confirmation
-        shot(driver,"");
+        shot(driver,"","scenario2");
         driver.findElement(By.id("idSIButton9")).click();
         try {
             Thread.sleep(12000);
@@ -268,7 +268,7 @@ public class ScenarioRun {
         }
 
         // Close the dialog box
-        shot(driver,"");
+        shot(driver,"","scenario2");
         driver.findElement(By.xpath("//*[text()='\uE711']")).click();
         try {
             Thread.sleep(4000);
@@ -285,7 +285,7 @@ public class ScenarioRun {
 
         // Click Resources Button
         driver.manage().window().maximize();
-        shot(driver,"");
+        shot(driver,"","scenario2");
         driver.findElement(By.partialLinkText("Resources")).click();
         try {
             Thread.sleep(3000);
@@ -301,7 +301,7 @@ public class ScenarioRun {
         }
 
         // Click on the Academics, Classes & Registration Button
-        shot(driver,"");
+        shot(driver,"","scenario2");
         driver.findElement(By.xpath("//*[text()='Academics, Classes & Registration']")).click();
         try {
             Thread.sleep(2000);
@@ -312,7 +312,7 @@ public class ScenarioRun {
         // Add to Favorites
 
         // 1. Canvas LMS
-        shot(driver,"");
+        shot(driver,"","scenario2");
         driver.findElement(By.xpath("//*[@data-gtm-sh-resources-favorite='Canvas LMS']")).click();
         try {
             Thread.sleep(1500);
@@ -321,7 +321,7 @@ public class ScenarioRun {
         }
 
         // 2. Course Descriptions
-        shot(driver,"");
+        shot(driver,"","scenario2");
         driver.findElement(By.xpath("//*[@data-gtm-sh-resources-favorite='Course Descriptions']")).click();
         try {
             Thread.sleep(1500);
@@ -330,7 +330,7 @@ public class ScenarioRun {
         }
 
         // 3. Academic Calender
-        shot(driver,"");
+        shot(driver,"","scenario2");
         driver.findElement(By.xpath("//*[@data-gtm-sh-resources-favorite='Academic Calendar']")).click();
         try {
             Thread.sleep(1500);
@@ -339,7 +339,7 @@ public class ScenarioRun {
         }
 
         // 4. Advising Services
-        shot(driver,"");
+        shot(driver,"","scenario2");
         driver.findElement(By.xpath("//*[@data-gtm-sh-resources-favorite='Advising Services']")).click();
         try {
             Thread.sleep(1500);
@@ -353,12 +353,12 @@ public class ScenarioRun {
             test2.log(LogStatus.PASS,"Remove links from favorites failed");
         }
 
-        shot(driver,"");
+        shot(driver,"","scenario2");
         // Logout and Close the window
         driver.findElement(By.xpath("//*[@id='O365_MainLink_Me']")).click();
-        shot(driver,"");
+        shot(driver,"","scenario2");
         driver.findElement(By.xpath("//*[text()='Sign out']")).click();
-        shot(driver,"");
+        shot(driver,"","scenario2");
         try {
             Thread.sleep(4000);
         } catch (Exception err) {
@@ -387,10 +387,10 @@ public class ScenarioRun {
 
         driver = new ChromeDriver();
         // Load Northeastern Login Page
-        shot(driver, "");
+        shot(driver, "","scenario3");
         driver.get("https://me.northeastern.edu");
         driver.manage().window().maximize();
-        shot(driver, "");
+        shot(driver, "","scenario3");
 
         // Validation to check Northeastern Website load was successfully
         if (driver.getTitle().equalsIgnoreCase("Home Realm Discovery")) {
@@ -402,14 +402,14 @@ public class ScenarioRun {
 
         // Choose Active Directory
         driver.findElement(By.xpath("//*[text()='Active Directory']")).click();
-        shot(driver, "");
+        shot(driver, "","scenario3");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
         // Type in username and password and click submit
         driver.findElement(By.id("userNameInput")).sendKeys(userName);
 //        System.out.println(Base64.getDecoder().decode(password).toString());
         driver.findElement(By.id("passwordInput")).sendKeys(password);
-        shot(driver, "");
+        shot(driver, "","scenario3");
         driver.findElement(By.id("submitButton")).click();
         try {
             Thread.sleep(4000);
@@ -417,10 +417,10 @@ public class ScenarioRun {
             err.printStackTrace();
         }
 
-        shot(driver, "");
+        shot(driver, "","scenario3");
         // Send a Push notification to the user
         driver.findElement(By.xpath("//*[text()='Send Me a Push ']")).click();
-        shot(driver, "");
+        shot(driver, "","scenario3");
         try {
             Thread.sleep(1000);
         } catch (Exception err) {
@@ -428,7 +428,7 @@ public class ScenarioRun {
         }
 
         // Login Confirmation
-        shot(driver, "");
+        shot(driver, "","scenario3");
         driver.findElement(By.id("idSIButton9")).click();
         try {
             Thread.sleep(5000);
@@ -437,7 +437,7 @@ public class ScenarioRun {
         }
 
         // Close the dialog box
-        shot(driver, "");
+        shot(driver, "","scenario3");
         driver.findElement(By.xpath("//*[text()='\uE711']")).click();
         try {
             Thread.sleep(4000);
@@ -455,7 +455,7 @@ public class ScenarioRun {
 
         // Click Resources Button
         driver.manage().window().maximize();
-        shot(driver, "");
+        shot(driver, "","scenario3");
         driver.findElement(By.partialLinkText("Resources")).click();
         try {
             Thread.sleep(3000);
@@ -471,7 +471,7 @@ public class ScenarioRun {
         }
 
         // Click on the Academics, Classes & Registration Button
-        shot(driver, "");
+        shot(driver, "","scenario3");
         driver.findElement(By.xpath("//*[text()='Academics, Classes & Registration']")).click();
         try {
             Thread.sleep(2000);
@@ -481,7 +481,7 @@ public class ScenarioRun {
 
 
         // Click on the Course Registration
-        shot(driver, "");
+        shot(driver, "","scenario3");
         driver.findElement(By.xpath("//*[@data-gtm-sh-resources-link='Course Registration']")).click();
         try {
             Thread.sleep(2000);
@@ -503,7 +503,7 @@ public class ScenarioRun {
         }
 
         // Click on the Browse Classes
-        shot(driver, "");
+        shot(driver, "","scenario3");
         driver.findElement(By.xpath("//*[text()='Browse Classes']")).click();
         try {
             Thread.sleep(2000);
@@ -514,14 +514,14 @@ public class ScenarioRun {
 
         // Choose 2023 spring semester for the list and confirm
 //        driver.switchTo().defaultContent();
-        shot(driver, "");
+        shot(driver, "","scenario3");
 
         driver.findElement(By.id("s2id_txt_term")).click();
         driver.findElement(By.id("s2id_autogen1_search")).sendKeys("Spring 2023 Semester");
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.findElement(By.xpath("//div[@id=\"202330\"]")).click();
         driver.findElement(By.id("term-go")).click();
-        shot(driver, "");
+        shot(driver, "","scenario3");
         try {
             Thread.sleep(5000);
         } catch (Exception err) {
@@ -574,10 +574,10 @@ public class ScenarioRun {
 
         driver = new ChromeDriver();
         // Load Northeastern Bookstore Page
-        shot(driver,"");
+        shot(driver,"","scenario4");
         driver.get("https://northeastern.bncollege.com/");
         driver.manage().window().maximize();
-        shot(driver,"");
+        shot(driver,"","scenario4");
 
         // Validation to check Northeastern BookStore Website load was successfully
         if (driver.getTitle().equalsIgnoreCase("Apparel, Gifts & Textbooks | Northeastern University Official Bookstore")) {
@@ -593,7 +593,7 @@ public class ScenarioRun {
 
         // Search for an Item from the search bar
         driver.findElement(By.id("bned_site_search")).sendKeys("laptop", Keys.ENTER);
-        shot(driver, "");
+        shot(driver, "","scenario4");
         try {
             Thread.sleep(2000);
         } catch (Exception err) {
@@ -636,6 +636,7 @@ public class ScenarioRun {
             err.printStackTrace();
         }
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        shot(driver, "","scenario4");
         WebElement addToCart =wait.until(ExpectedConditions
                 .elementToBeClickable(driver.findElement(By.xpath("//*[@id=\"addToCartButton\"]"))));
         addToCart.findElement(By.xpath("//*[@id=\"addToCartButton\"]")).click();
@@ -650,6 +651,7 @@ public class ScenarioRun {
         } catch (Exception err) {
             err.printStackTrace();
         }
+        shot(driver, "","scenario4");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.findElement(By.className("cart-items-info")).click();
         try {
@@ -696,7 +698,7 @@ public class ScenarioRun {
         // Load Northeastern Login Page
         driver.get("https://me.northeastern.edu");
         driver.manage().window().maximize();
-        shot(driver,"");
+        shot(driver,"","scenario5");
 
         // Validation to check Northeastern Website load was successfully
         if (driver.getTitle().equalsIgnoreCase("Home Realm Discovery")) {
@@ -708,13 +710,13 @@ public class ScenarioRun {
 
         // Choose Active Directory
         driver.findElement(By.xpath("//*[text()='Active Directory']")).click();
-        shot(driver,"");
+        shot(driver,"","scenario5");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
         // Type in username and password
         driver.findElement(By.id("userNameInput")).sendKeys(userName);
         driver.findElement(By.id("passwordInput")).sendKeys(password);
-        shot(driver,"");
+        shot(driver,"","scenario5");
         driver.findElement(By.id("submitButton")).click();
         try {
             Thread.sleep(4000);
@@ -724,9 +726,9 @@ public class ScenarioRun {
 
 
         // Send Duo Authentication
-        shot(driver,"");
+        shot(driver,"","scenario5");
         driver.findElement(By.cssSelector("button.positive.auth-button")).click();
-        shot(driver,"D:/Github/SeleniumAutomation/Scenario5.5.png");
+        shot(driver,"","scenario5");
         try {
             Thread.sleep(7000);
         } catch (Exception err) {
@@ -758,7 +760,7 @@ public class ScenarioRun {
         }
 
         // Close the dialog box
-        shot(driver,"");
+        shot(driver,"","scenario5");
         driver.findElement(By.xpath("//*[text()='\uE711']")).click();
         try {
             Thread.sleep(4000);
@@ -773,7 +775,7 @@ public class ScenarioRun {
         } catch (Exception err) {
             System.out.println(err);
         }
-        shot(driver,"");
+        shot(driver,"","scenario5");
 
         //        Validation to check resource page navigation was successful
         if (driver.getTitle().equalsIgnoreCase("Student Hub - Resources")) {
@@ -784,7 +786,7 @@ public class ScenarioRun {
 
         // Click Classes Button
         driver.findElement(By.tagName("p")).click();
-        shot(driver,"");
+        shot(driver,"","scenario5");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
         // Click Registration Button
@@ -805,23 +807,23 @@ public class ScenarioRun {
         } catch (Exception err) {
             System.out.println(err);
         }
-        shot(driver,"");
+        shot(driver,"","scenario5");
         driver.findElement(By.id("planningLink")).click();
 
         // Login Again using myNortheastern
         int index = userName.indexOf('@');
         String emailTrimmed = userName.substring(0,index);
-        shot(driver,"");
+        shot(driver,"","scenario5");
         driver.findElement(By.id("username")).sendKeys(emailTrimmed);
         driver.findElement(By.id("password")).sendKeys(password);
-        shot(driver,"");
+        shot(driver,"","scenario5");
         driver.findElement(By.name("_eventId_proceed")).click();
 
 
         // Send Duo Authentication
         driver.switchTo().frame("duo_iframe");
         driver.findElement(By.xpath("//*[@id=\"auth_methods\"]/fieldset/div[1]/button")).click();
-        shot(driver,"");
+        shot(driver,"","scenario5");
         try {
             Thread.sleep(7000);
         } catch (Exception err) {
@@ -837,14 +839,14 @@ public class ScenarioRun {
 
         // Choose 2023 spring semester for the list and confirm
         driver.switchTo().defaultContent();
-        shot(driver,"");
+        shot(driver,"","scenario5");
 
         driver.findElement(By.id("s2id_txt_term")).click();
         driver.findElement(By.id("s2id_autogen1_search")).sendKeys("Spring 2023 Semester");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.findElement(By.xpath("//div[@id=\"202330\"]")).click();
         driver.findElement(By.id("term-go")).click();
-        shot(driver,"");
+        shot(driver,"","scenario5");
         try {
             Thread.sleep(5000);
         } catch (Exception err) {
@@ -853,7 +855,7 @@ public class ScenarioRun {
 
         // Create Plan
         driver.findElement(By.id("createPlan")).click();
-        shot(driver,"");
+        shot(driver,"","scenario5");
         try {
             Thread.sleep(2000);
         } catch (Exception err) {
@@ -862,7 +864,7 @@ public class ScenarioRun {
 
         // Search Course
         driver.findElement(By.id("search-go")).click();
-        shot(driver,"");
+        shot(driver,"","scenario5");
         try {
             Thread.sleep(2000);
         } catch (Exception err) {
@@ -871,11 +873,11 @@ public class ScenarioRun {
 
         // Add new plan
         driver.findElement(By.xpath("//*[@id=\"table1\"]/tbody/tr[1]/td[6]/div/button[2]")).click();
-        shot(driver,"");
+        shot(driver,"","scenario5");
         driver.findElement(By.id("saveButton")).click();
-        shot(driver,"");
+        shot(driver,"","scenario5");
         driver.findElement(By.id("txt_planDesc")).sendKeys("NEW PLAN");
-        shot(driver,"");
+        shot(driver,"","scenario5");
         try {
             Thread.sleep(1000);
         } catch (Exception err) {
@@ -887,7 +889,7 @@ public class ScenarioRun {
         } catch (Exception err) {
             System.out.println(err);
         }
-        shot(driver,"");
+        shot(driver,"","scenario5");
 
         driver.close();
     }

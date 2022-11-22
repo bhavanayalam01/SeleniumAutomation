@@ -26,7 +26,11 @@ import static com.info6255.group8.ScreenShot.shot;
 public class ScenarioRun {
 
     ChromeDriver driver;
-    static ExtentReports testReport;
+    static ExtentReports testReport1;
+    static ExtentReports testReport2;
+    static ExtentReports testReport3;
+    static ExtentReports testReport4;
+    static ExtentReports testReport5;
     static ExtentTest test1;
     static ExtentTest test2;
     static ExtentTest test3;
@@ -35,8 +39,8 @@ public class ScenarioRun {
 
     @BeforeClass
     public static void startScenario1Test() {
-        testReport = new com.relevantcodes.extentreports.ExtentReports("C:\\Users\\swapn\\Documents\\Fall 2022\\Software Quality Control and Management\\Assignments\\Selenium Assignment\\SeleniumAutomation\\Reports.html", true);
-        test1 = testReport.startTest("Scenario1Check");
+        testReport1 = new com.relevantcodes.extentreports.ExtentReports("C:\\Users\\swapn\\Documents\\Fall 2022\\Software Quality Control and Management\\Assignments\\Selenium Assignment\\SeleniumAutomation\\Reports.html", false);
+        test1 = testReport1.startTest("Scenario1Check");
     }
 
     @Test(dataProvider = "dataInput")
@@ -197,14 +201,14 @@ public class ScenarioRun {
 
     @AfterClass
     public static void endScenario1Test() {
-        testReport.endTest(test1);
-        testReport.flush();
+        testReport1.endTest(test1);
+        testReport1.flush();
     }
 
     @BeforeClass
     public static void startScenario2Test() {
-        testReport = new com.relevantcodes.extentreports.ExtentReports("C:\\Users\\swapn\\Documents\\Fall 2022\\Software Quality Control and Management\\Assignments\\Selenium Assignment\\SeleniumAutomation\\Reports.html", true);
-        test2 = testReport.startTest("Scenario1Check");
+        testReport2 = new com.relevantcodes.extentreports.ExtentReports("C:\\Users\\swapn\\Documents\\Fall 2022\\Software Quality Control and Management\\Assignments\\Selenium Assignment\\SeleniumAutomation\\Reports.html", false);
+        test2 = testReport2.startTest("Scenario2Check");
     }
 
     @Test(dataProvider = "dataInput")
@@ -366,14 +370,14 @@ public class ScenarioRun {
 
     @AfterClass
     public static void endScenario2Test() {
-        testReport.endTest(test2);
-        testReport.flush();
+        testReport2.endTest(test2);
+        testReport2.flush();
     }
 
     @BeforeClass
     public static void startScenario3Test() {
-        testReport = new com.relevantcodes.extentreports.ExtentReports("shots/Reports.html", true);
-        test3 = testReport.startTest("Scenario3Check");
+        testReport3 = new com.relevantcodes.extentreports.ExtentReports("C:\\Users\\swapn\\Documents\\Fall 2022\\Software Quality Control and Management\\Assignments\\Selenium Assignment\\SeleniumAutomation\\Reports.html", false);
+        test3 = testReport3.startTest("Scenario3Check");
     }
 
     @Test(dataProvider = "dataInput")
@@ -387,9 +391,6 @@ public class ScenarioRun {
         driver.get("https://me.northeastern.edu");
         driver.manage().window().maximize();
         shot(driver, "");
-
-        testReport = new com.relevantcodes.extentreports.ExtentReports("src/shots/Reports.html", true);
-        test3 = testReport.startTest("Scenario1Check");
 
         // Validation to check Northeastern Website load was successfully
         if (driver.getTitle().equalsIgnoreCase("Home Realm Discovery")) {
@@ -557,14 +558,14 @@ public class ScenarioRun {
 
     @AfterClass
     public static void endScenario3Test() {
-        testReport.endTest(test2);
-        testReport.flush();
+        testReport3.endTest(test2);
+        testReport3.flush();
     }
 
     @BeforeClass
     public static void startScenario4Test() {
-        testReport = new com.relevantcodes.extentreports.ExtentReports("C:\\Users\\swapn\\Documents\\Fall 2022\\Software Quality Control and Management\\Assignments\\Selenium Assignment\\SeleniumAutomation\\Reports.html", true);
-        test4 = testReport.startTest("Scenario4Check");
+        testReport4 = new com.relevantcodes.extentreports.ExtentReports("C:\\Users\\swapn\\Documents\\Fall 2022\\Software Quality Control and Management\\Assignments\\Selenium Assignment\\SeleniumAutomation\\Reports.html", false);
+        test4 = testReport4.startTest("Scenario4Check");
     }
 
     @Test(dataProvider = "dataInput")
@@ -589,37 +590,6 @@ public class ScenarioRun {
 //        driver.findElement(By.id("bnedLoginButton")).click();
 //
         WebDriverWait wait = new WebDriverWait(driver, 500);
-//
-//        //switching to login popup and adding details
-//        driver.switchTo().frame("loginHeaderIframe1");
-//        WebElement username = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"email\"]")));
-//        username.sendKeys(userName);
-//
-//        WebElement Password = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"password\"]")));
-//        Password.sendKeys(password);
-//        try {
-//            Thread.sleep(2000);
-//        } catch (Exception err) {
-//            err.printStackTrace();
-//        }
-//        driver.switchTo().defaultContent();
-//
-//        //clicking signin
-//        driver.findElement(By.id("submitLoginHeaderForm")).click();
-//        try {
-//            Thread.sleep(2000);
-//        } catch (Exception err) {
-//            err.printStackTrace();
-//        }
-
-//        // Click on Sign-In/Create Account Button to navigate to LoginPage
-//        driver.findElement(By.xpath("//*[text()='Sign In / Create Account']")).click();
-//        shot(driver,"");
-//        try {
-//            Thread.sleep(2000);
-//        } catch (Exception err) {
-//            err.printStackTrace();
-//        }
 
         // Search for an Item from the search bar
         driver.findElement(By.id("bned_site_search")).sendKeys("laptop", Keys.ENTER);
@@ -628,6 +598,13 @@ public class ScenarioRun {
             Thread.sleep(2000);
         } catch (Exception err) {
             err.printStackTrace();
+        }
+
+        // Validation to check search results were fetched successfully
+        if (driver.getTitle().contains("Search laptop")) {
+            test4.log(LogStatus.PASS,"Search results fetched successfully");
+        } else {
+            test4.log(LogStatus.FAIL,"Search results failed");
         }
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -641,6 +618,13 @@ public class ScenarioRun {
             err.printStackTrace();
         }
         e.findElement(By.xpath("/html/body/main/div[3]/div[5]/div[1]/div[2]/div/div/div/ul/div[1]/div/a")).click();
+
+        // Validation to check search results were fetched successfully
+        if (driver.getTitle().contains("HP 14")) {
+            test4.log(LogStatus.PASS,"Display Item detail load was successfully");
+        } else {
+            test4.log(LogStatus.FAIL,"Display Item detail load failed");
+        }
 
         //to perform Scroll on application using Selenium
         ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,250)", "");
@@ -673,19 +657,34 @@ public class ScenarioRun {
         } catch (Exception err) {
             err.printStackTrace();
         }
+        // Validation to check cart was loaded
+        if (driver.getTitle().contains("Your Shopping Cart")) {
+            test4.log(LogStatus.PASS,"Display Items in Cart load was successful");
+        } else {
+            test4.log(LogStatus.FAIL,"Display Items in Cart load failed");
+        }
+
+//        System.out.println(driver.findElement(By.xpath("//*[text()='1 Item']")));
+
+//        // Validation to check item was added to cart
+//        if (driver.findElement(By.xpath("//*[text()='Your cart is empty']") == true) ) {
+//            test4.log(LogStatus.PASS,"Display Items in Cart load was successful");
+//        } else {
+//            test4.log(LogStatus.FAIL,"Display Items in Cart load failed");
+//        }
 
     }
 
     @AfterClass
     public static void endScenario4Test() {
-        testReport.endTest(test4);
-        testReport.flush();
+        testReport4.endTest(test4);
+        testReport4.flush();
     }
 
     @BeforeClass
     public static void startScenario5Test() {
-        testReport = new com.relevantcodes.extentreports.ExtentReports("C:\\Users\\swapn\\Documents\\Fall 2022\\Software Quality Control and Management\\Assignments\\Selenium Assignment\\SeleniumAutomation\\Reports.html", true);
-        test5 = testReport.startTest("Scenario1Check");
+        testReport5 = new com.relevantcodes.extentreports.ExtentReports("C:\\Users\\swapn\\Documents\\Fall 2022\\Software Quality Control and Management\\Assignments\\Selenium Assignment\\SeleniumAutomation\\Reports.html", false);
+        test5 = testReport5.startTest("Scenario5Check");
     }
 
     @Test(dataProvider = "dataInput")
@@ -829,6 +828,13 @@ public class ScenarioRun {
             System.out.println(err);
         }
 
+        //        Validation to check banner page navigation was successful
+        if (driver.getTitle().equalsIgnoreCase("Banner")) {
+            test5.log(LogStatus.PASS,"Navigation to Banner Page - Success");
+        } else {
+            test5.log(LogStatus.FAIL,"Navigation to Banner Page - Failed");
+        }
+
         // Choose 2023 spring semester for the list and confirm
         driver.switchTo().defaultContent();
         shot(driver,"");
@@ -884,13 +890,12 @@ public class ScenarioRun {
         shot(driver,"");
 
         driver.close();
-        driver.close();
     }
 
     @AfterClass
     public static void endScenario5Test() {
-        testReport.endTest(test5);
-        testReport.flush();
+        testReport5.endTest(test5);
+        testReport5.flush();
     }
 
     @DataProvider(name = "dataInput")

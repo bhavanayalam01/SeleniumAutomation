@@ -31,7 +31,7 @@ public class Scenario1 {
     @Test(dataProvider = "dataInput")
     public void performLogin(String userName, String password) {
 
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\swapn\\Downloads\\chromedriver_win32 (1)\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/chromedriver.exe");
 
         driver = new ChromeDriver();
         // Load Northeastern Login Page

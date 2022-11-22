@@ -11,15 +11,17 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class ScreenShot {
-    public static void shot(WebDriver driver,String savedPtah){
+    public static String shot(WebDriver driver,String savedPtah){
         File srcfile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try{
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH-mm-ss");
             LocalDateTime now = LocalDateTime.now();
-            savedPtah = "C:/Users/swapn/Desktop/Screenshot/"+dtf.format(now)+".png";
+            savedPtah = "src/shots/"+dtf.format(now)+".png";
             FileUtils.copyFile(srcfile,new File(savedPtah));
+            return savedPtah;
         }catch (IOException e){
             e.printStackTrace();
+            return e.getMessage();
         }
     }
 }

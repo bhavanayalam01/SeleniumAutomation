@@ -15,7 +15,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
@@ -27,10 +26,6 @@ public class ScenarioRun {
 
     ChromeDriver driver;
     static ExtentReports testReport1;
-    static ExtentReports testReport2;
-    static ExtentReports testReport3;
-    static ExtentReports testReport4;
-    static ExtentReports testReport5;
     static ExtentTest test1;
     static ExtentTest test2;
     static ExtentTest test3;
@@ -39,7 +34,7 @@ public class ScenarioRun {
 
     @BeforeClass
     public static void startScenario1Test() {
-        testReport1 = new com.relevantcodes.extentreports.ExtentReports("C:\\Users\\swapn\\Documents\\Fall 2022\\Software Quality Control and Management\\Assignments\\Selenium Assignment\\SeleniumAutomation\\Reports.html", false);
+        testReport1 = new com.relevantcodes.extentreports.ExtentReports("C:\\Users\\swapn\\Documents\\Fall 2022\\Software Quality Control and Management\\Assignments\\Selenium Assignment\\SeleniumAutomation\\Reports.html", true);
         test1 = testReport1.startTest("Scenario1Check");
     }
 
@@ -207,8 +202,8 @@ public class ScenarioRun {
 
     @BeforeClass
     public static void startScenario2Test() {
-        testReport2 = new com.relevantcodes.extentreports.ExtentReports("C:\\Users\\swapn\\Documents\\Fall 2022\\Software Quality Control and Management\\Assignments\\Selenium Assignment\\SeleniumAutomation\\Reports.html", false);
-        test2 = testReport2.startTest("Scenario2Check");
+//        testReport2 = new com.relevantcodes.extentreports.ExtentReports("C:\\Users\\swapn\\Documents\\Fall 2022\\Software Quality Control and Management\\Assignments\\Selenium Assignment\\SeleniumAutomation\\Reports.html", false);
+        test2 = testReport1.startTest("Scenario2Check");
     }
 
     @Test(dataProvider = "dataInput")
@@ -370,14 +365,14 @@ public class ScenarioRun {
 
     @AfterClass
     public static void endScenario2Test() {
-        testReport2.endTest(test2);
-        testReport2.flush();
+        testReport1.endTest(test2);
+        testReport1.flush();
     }
 
     @BeforeClass
     public static void startScenario3Test() {
-        testReport3 = new com.relevantcodes.extentreports.ExtentReports("C:\\Users\\swapn\\Documents\\Fall 2022\\Software Quality Control and Management\\Assignments\\Selenium Assignment\\SeleniumAutomation\\Reports.html", false);
-        test3 = testReport3.startTest("Scenario3Check");
+//        testReport3 = new com.relevantcodes.extentreports.ExtentReports("C:\\Users\\swapn\\Documents\\Fall 2022\\Software Quality Control and Management\\Assignments\\Selenium Assignment\\SeleniumAutomation\\Reports.html", false);
+        test3 = testReport1.startTest("Scenario3Check");
     }
 
     @Test(dataProvider = "dataInput")
@@ -558,14 +553,14 @@ public class ScenarioRun {
 
     @AfterClass
     public static void endScenario3Test() {
-        testReport3.endTest(test2);
-        testReport3.flush();
+        testReport1.endTest(test3);
+        testReport1.flush();
     }
 
     @BeforeClass
     public static void startScenario4Test() {
-        testReport4 = new com.relevantcodes.extentreports.ExtentReports("C:\\Users\\swapn\\Documents\\Fall 2022\\Software Quality Control and Management\\Assignments\\Selenium Assignment\\SeleniumAutomation\\Reports.html", false);
-        test4 = testReport4.startTest("Scenario4Check");
+//        testReport4 = new com.relevantcodes.extentreports.ExtentReports("C:\\Users\\swapn\\Documents\\Fall 2022\\Software Quality Control and Management\\Assignments\\Selenium Assignment\\SeleniumAutomation\\Reports.html", false);
+        test4 = testReport1.startTest("Scenario4Check");
     }
 
     @Test(dataProvider = "dataInput")
@@ -666,6 +661,8 @@ public class ScenarioRun {
             test4.log(LogStatus.FAIL,"Display Items in Cart load failed");
         }
 
+        driver.close();
+
 //        System.out.println(driver.findElement(By.xpath("//*[text()='1 Item']")));
 
 //        // Validation to check item was added to cart
@@ -679,14 +676,14 @@ public class ScenarioRun {
 
     @AfterClass
     public static void endScenario4Test() {
-        testReport4.endTest(test4);
-        testReport4.flush();
+        testReport1.endTest(test4);
+        testReport1.flush();
     }
 
     @BeforeClass
     public static void startScenario5Test() {
-        testReport5 = new com.relevantcodes.extentreports.ExtentReports("C:\\Users\\swapn\\Documents\\Fall 2022\\Software Quality Control and Management\\Assignments\\Selenium Assignment\\SeleniumAutomation\\Reports.html", false);
-        test5 = testReport5.startTest("Scenario5Check");
+//        testReport5 = new com.relevantcodes.extentreports.ExtentReports("C:\\Users\\swapn\\Documents\\Fall 2022\\Software Quality Control and Management\\Assignments\\Selenium Assignment\\SeleniumAutomation\\Reports.html", false);
+        test5 = testReport1.startTest("Scenario5Check");
     }
 
     @Test(dataProvider = "dataInput")
@@ -825,16 +822,9 @@ public class ScenarioRun {
         driver.findElement(By.xpath("//*[@id=\"auth_methods\"]/fieldset/div[1]/button")).click();
         shot(driver,"","scenario5");
         try {
-            Thread.sleep(7000);
+            Thread.sleep(2000);
         } catch (Exception err) {
             System.out.println(err);
-        }
-
-        //        Validation to check banner page navigation was successful
-        if (driver.getTitle().equalsIgnoreCase("Banner")) {
-            test5.log(LogStatus.PASS,"Navigation to Banner Page - Success");
-        } else {
-            test5.log(LogStatus.FAIL,"Navigation to Banner Page - Failed");
         }
 
         // Choose 2023 spring semester for the list and confirm
@@ -851,6 +841,14 @@ public class ScenarioRun {
             Thread.sleep(5000);
         } catch (Exception err) {
             System.out.println(err);
+        }
+
+        //        Validation to check banner page navigation was successful
+        if (driver.getTitle().equalsIgnoreCase("Banner")) {
+            test5.log(LogStatus.PASS,"Navigation to Banner Page - Success");
+        } else {
+            System.out.println(driver.getTitle());
+            test5.log(LogStatus.FAIL,"Navigation to Banner Page - Failed");
         }
 
         // Create Plan
@@ -896,8 +894,8 @@ public class ScenarioRun {
 
     @AfterClass
     public static void endScenario5Test() {
-        testReport5.endTest(test5);
-        testReport5.flush();
+        testReport1.endTest(test5);
+        testReport1.flush();
     }
 
     @DataProvider(name = "dataInput")

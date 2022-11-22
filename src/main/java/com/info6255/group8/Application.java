@@ -12,7 +12,7 @@ public class Application {
     public static void main(String[] args) throws InterruptedException {
 
         Scenario1 scenario1 = new Scenario1();
-        scenario1.performLogin("","");
+        scenario1.performLogin("z","");
     }
 
 }

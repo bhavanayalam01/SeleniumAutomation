@@ -24,14 +24,14 @@ public class Scenario1 {
 
     @BeforeClass
     public static void startTest() {
-        testReport = new com.relevantcodes.extentreports.ExtentReports("C:\\Users\\swapn\\Documents\\Fall 2022\\Software Quality Control and Management\\Assignments\\Selenium Assignment\\SeleniumAutomation\\Reports.html", true);
+        testReport = new com.relevantcodes.extentreports.ExtentReports("D:\\Github\\SeleniumAutomation\\Reports.html", true);
         test = testReport.startTest("Scenario1Check");
     }
 
     @Test(dataProvider = "dataInput")
     public void performLogin(String userName, String password) {
 
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\swapn\\Downloads\\chromedriver_win32 (1)\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:\\chromedriver.exe");
 
         driver = new ChromeDriver();
         // Load Northeastern Login Page

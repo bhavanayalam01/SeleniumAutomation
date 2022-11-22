@@ -16,7 +16,7 @@ public class ScreenShot {
         try{
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH-mm-ss");
             LocalDateTime now = LocalDateTime.now();
-            savedPtah = "C:/Users/swapn/Desktop/Screenshot/"+dtf.format(now)+".png";
+            savedPtah = "D:/Screenshot/"+dtf.format(now)+".png";
             FileUtils.copyFile(srcfile,new File(savedPtah));
         }catch (IOException e){
             e.printStackTrace();
